@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"strings"
 
-	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 	"github.com/securego/gosec/v2"
 	"github.com/securego/gosec/v2/cwe"
@@ -484,6 +484,55 @@ var _ = Describe("Formatter", func() {
 
 				Expect(result).To(ContainSubstring(expectedCweID))
 			}
+		})
+	})
+
+	Context("When converting suppressed issues", func() {
+		ruleID := "G101"
+		cwe := gosec.GetCweByRule(ruleID)
+		suppressions := []gosec.SuppressionInfo{
+			{
+				Kind:          "kind",
+				Justification: "justification",
+			},
+		}
+		suppressedIssue := createIssue(ruleID, cwe)
+		suppressedIssue.WithSuppressions(suppressions)
+
+		It("text formatted report should contain the suppressed issues", func() {
+			error := map[string][]gosec.Error{}
+			reportInfo := gosec.NewReportInfo([]*gosec.Issue{&suppressedIssue}, &gosec.Metrics{}, error)
+
+			buf := new(bytes.Buffer)
+			err := CreateReport(buf, "text", false, []string{}, reportInfo)
+			Expect(err).ShouldNot(HaveOccurred())
+
+			result := stripString(buf.String())
+			Expect(result).To(ContainSubstring("Results:Summary"))
+		})
+
+		It("sarif formatted report should contain the suppressed issues", func() {
+			error := map[string][]gosec.Error{}
+			reportInfo := gosec.NewReportInfo([]*gosec.Issue{&suppressedIssue}, &gosec.Metrics{}, error)
+
+			buf := new(bytes.Buffer)
+			err := CreateReport(buf, "sarif", false, []string{}, reportInfo)
+			Expect(err).ShouldNot(HaveOccurred())
+
+			result := stripString(buf.String())
+			Expect(result).To(ContainSubstring(`"results":[{`))
+		})
+
+		It("json formatted report should contain the suppressed issues", func() {
+			error := map[string][]gosec.Error{}
+			reportInfo := gosec.NewReportInfo([]*gosec.Issue{&suppressedIssue}, &gosec.Metrics{}, error)
+
+			buf := new(bytes.Buffer)
+			err := CreateReport(buf, "json", false, []string{}, reportInfo)
+			Expect(err).ShouldNot(HaveOccurred())
+
+			result := stripString(buf.String())
+			Expect(result).To(ContainSubstring(`"Issues":[{`))
 		})
 	})
 })

@@ -4,9 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
-
 	"github.com/securego/gosec/v2"
 	"github.com/securego/gosec/v2/rules"
 	"github.com/securego/gosec/v2/testutils"
@@ -25,12 +24,12 @@ var _ = Describe("gosec rules", func() {
 	BeforeEach(func() {
 		logger, _ = testutils.NewLogger()
 		config = gosec.NewConfig()
-		analyzer = gosec.NewAnalyzer(config, tests, logger)
+		analyzer = gosec.NewAnalyzer(config, tests, false, false, logger)
 		runner = func(rule string, samples []testutils.CodeSample) {
 			for n, sample := range samples {
 				analyzer.Reset()
 				analyzer.SetConfig(sample.Config)
-				analyzer.LoadRules(rules.Generate(rules.NewRuleFilter(false, rule)).Builders())
+				analyzer.LoadRules(rules.Generate(false, rules.NewRuleFilter(false, rule)).RulesInfo())
 				pkg := testutils.NewTestPackage()
 				defer pkg.Close()
 				for i, code := range sample.Code {

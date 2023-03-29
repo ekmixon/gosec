@@ -1,33 +1,16 @@
-// (c) Copyright 2016 Hewlett Packard Enterprise Development LP
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
-package html
-
-const templateContent = `
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <title>Golang Security Checker</title>
   <link rel="shortcut icon" type="image/png" href="https://securego.io/img/favicon.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.2/css/bulma.min.css" integrity="sha512-byErQdWdTqREz6DLAA9pCnLbdoGGhXfU6gm1c8bkf7F51JVmUBlayGe2A31VpXWQP+eiJ3ilTAZHCR3vmMyybA==" crossorigin="anonymous"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css" integrity="sha512-kZqGbhf9JTB4bVJ0G8HCkqmaPcRgo88F0dneK30yku5Y/dep7CZfCnNml2Je/sY4lBoqoksXz4PtVXS4GHSUzQ==" crossorigin="anonymous"/>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js" integrity="sha512-s+tOYYcC3Jybgr9mVsdAxsRYlGNq4mlAurOrfNuGMQ/SCofNPu92tjE7YRZCsdEtWL1yGkqk15fU/ark206YTg==" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/languages/go.min.js" integrity="sha512-+UYV2NyyynWEQcZ4sMTKmeppyV331gqvMOGZ61/dqc89Tn1H40lF05ACd03RSD9EWwGutNwKj256mIR8waEJBQ==" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.min.js" integrity="sha256-cLWs9L+cjZg8CjGHMpJqUgKKouPlmoMP/0wIdPtaPGs=" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.min.js" integrity="sha256-JIW8lNqN2EtqC6ggNZYnAdKMJXRQfkPMvdRt+b0/Jxc=" crossorigin="anonymous"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.17.0/babel.min.js" integrity="sha256-1IWWLlCKFGFj/cjryvC7GDF5wRYnf9tSvNVVEj8Bm+o=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css" integrity="sha512-IgmDkwzs96t4SrChW29No3NXBIBv8baW490zk5aXvhCD8vuZM3yUSkbyTBcXohkySecyzIrUwiF/qV0cuPcL3Q==" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/styles/default.min.css" integrity="sha512-hasIneQUHlh06VNBe7f6ZcHmeRTLIaQWFd43YriJ0UND19bvYRauxthDg8E4eVNPm9bRUhr5JGeqH7FRFXQu5g==" crossorigin="anonymous"/>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/highlight.min.js" integrity="sha512-IaaKO80nPNs5j+VLxd42eK/7sYuXQmr+fyywCNA0e+C6gtQnuCXNtORe9xR4LqGPz5U9VpH+ff41wKs/ZmC3iA==" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.4.0/languages/go.min.js" integrity="sha512-cSV8KK6UAf1DR6Fh7+AU8Vn9q/X1CX60ktQ4R1gfaWuRnGL30r7LPiCdI3AdyiIjcalKZnyAkw5xH1QZQkDT7A==" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.7.0/react.min.js" integrity="sha512-+TFn1Gqbwx/qgwW3NU1/YtFYTfHGeD1e/8YfJZzkb6TFEZP4SUwp1Az9DMeWh3qC0F+YPKXbV3YclMUwBTvO3g==" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/react/15.6.1/react-dom.min.js" integrity="sha512-8C49ZG/SaQnWaUgCHTU1o8uIQNYE6R8me38SwF26g2Q0byEXF4Jlvm+T/JAMHMeTBiEVPslSZRv9Xt4AV0pfmw==" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js" integrity="sha512-kp7YHLxuJDJcOzStgd6vtpxr4ZU9kjn77e6dBsivSz+pUuAuMlE2UTdKB7jjsWT84qbS8kdCWHPETnP/ctrFsA==" crossorigin="anonymous"></script>
   <style>
   .field-label {
     min-width: 80px;
@@ -40,6 +23,15 @@ const templateContent = `
   }
   .tag {
     width: 80px;
+  }
+  .summary-first {
+    padding: .75rem .75rem .1rem .75rem;
+  }
+  .summary-last {
+    padding: .1rem .75rem .75rem .75rem;
+  }
+  .summary {
+    padding: .1rem .75rem ;
   }
   </style>
 </head>
@@ -62,6 +54,8 @@ const templateContent = `
           level += " is-warning";
         } else if (this.props.level === "LOW") {
           level += " is-info";
+        } else if (this.props.level === "WAIVED") {
+          level += " is-success";
         }
         level +=" is-rounded";
         return (
@@ -92,17 +86,18 @@ const templateContent = `
           <div className="columns">
               <div className="column is-three-quarters">
                 <strong className="break-word">{ this.props.data.file } (line { this.props.data.line })</strong>
-                <p>{ this.props.data.details }</p>
+                <p>{this.props.data.rule_id} (CWE-{this.props.data.cwe.id}): { this.props.data.details }</p>
               </div>
               <div className="column is-one-quarter">
                 <div className="field is-grouped is-grouped-multiline">
+                  {this.props.data.nosec && <IssueTag label="NoSec" level="WAIVED"/>}
                   <IssueTag label="Severity" level={ this.props.data.severity }/>
                   <IssueTag label="Confidence" level={ this.props.data.confidence }/>
                 </div>
               </div>
             </div>
             <div className="highlight">
-              <Highlight code={ this.props.data.code }/>
+              <Highlight key={ this.props.data.file + this.props.data.line } code={ this.props.data.code }/>
             </div>
           </div>
         );
@@ -248,50 +243,89 @@ const templateContent = `
             );
           }.bind(this));
         return (
-          <nav className="panel">
-            <div className="panel-heading">Filters</div>
-            <div className="panel-block">
-              <div className="field is-horizontal">
-                <div className="field-label is-normal">
-                  <label className="label is-pulled-left">Severity</label>
+          <div>
+              <nav className="panel">
+                <div className="panel-heading">Filters</div>
+                <div className="panel-block">
+                  <div className="field is-horizontal">
+                    <div className="field-label is-normal">
+                      <label className="label is-pulled-left">Severity</label>
+                    </div>
+                    <div className="field-body">
+                      <LevelSelector selected={ this.props.severity } available={ this.props.allSeverities } onChange={ this.updateSeverity } />
+                    </div>
+                 </div>
                 </div>
-                <div className="field-body">
-                  <LevelSelector selected={ this.props.severity } available={ this.props.allSeverities } onChange={ this.updateSeverity } />
+                <div className="panel-block">
+                  <div className="field is-horizontal">
+                    <div className="field-label is-normal">
+                      <label className="label is-pulled-left">Confidence</label>
+                    </div>
+                    <div className="field-body">
+                      <LevelSelector selected={ this.props.confidence } available={ this.props.allConfidences } onChange={ this.updateConfidence } />
+                    </div>
+                  </div>
                 </div>
-             </div>
-            </div>
-            <div className="panel-block">
-              <div className="field is-horizontal">
-                <div className="field-label is-normal">
-                  <label className="label is-pulled-left">Confidence</label>
-                </div>
-                <div className="field-body">
-                  <LevelSelector selected={ this.props.confidence } available={ this.props.allConfidences } onChange={ this.updateConfidence } />
-                </div>
-              </div>
-            </div>
-            <div className="panel-block">
-              <div className="field is-horizontal">
-                <div className="field-label is-normal">
-                  <label className="label is-pulled-left">Issue type</label>
-                </div>
-                <div className="field-body">
-                  <div className="field">
-                    <div className="control">
-                      <div className="select is-fullwidth">
-                        <select onChange={ this.updateIssueType }>
-                          <option value="all" selected={ !this.props.issueType }>
-                            (all)
-                          </option>
-                          { issueTypes }
-                        </select>
+                <div className="panel-block">
+                  <div className="field is-horizontal">
+                    <div className="field-label is-normal">
+                      <label className="label is-pulled-left">Issue type</label>
+                    </div>
+                    <div className="field-body">
+                      <div className="field">
+                        <div className="control">
+                          <div className="select is-fullwidth">
+                            <select onChange={ this.updateIssueType }>
+                              <option value="all" selected={ !this.props.issueType }>
+                                (all)
+                              </option>
+                              { issueTypes }
+                            </select>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </nav>
+              </nav>
+              <nav className="panel">
+                <div className="panel-heading">Summary</div>
+                  <div className="panel-block">
+                      <div className="columns is-multiline">
+                          <div className="column is-half summary-first">
+                              <label className="label is-pulled-left">Gosec: </label>
+                          </div>
+                          <div className="column is-half summary-first">
+                              {this.props.data.GosecVersion}
+                          </div>
+                          <div className="column is-half summary">
+                              <label className="label is-pulled-left">Files: </label>
+                          </div>
+                          <div className="column is-half summary">
+                              {this.props.data.Stats.files.toLocaleString()}
+                          </div>
+                          <div className="column is-half summary">
+                              <label className="label is-pulled-left">Lines: </label>
+                          </div>
+                          <div className="column is-half summary">
+                              {this.props.data.Stats.lines.toLocaleString()}
+                          </div>
+                          <div className="column is-half summary">
+                              <label className="label is-pulled-left">Nosec: </label>
+                          </div>
+                          <div className="column is-half summary">
+                              {this.props.data.Stats.nosec.toLocaleString()}
+                          </div>
+                          <div className="column is-half summary-last">
+                              <label className="label is-pulled-left">Issues: </label>
+                          </div>
+                          <div className="column is-half summary-last">
+                              {this.props.data.Stats.found.toLocaleString()}
+                          </div>
+                      </div>
+                  </div>
+              </nav>
+          </div>
         );
       }
     });
@@ -372,6 +406,7 @@ const templateContent = `
             <div className="columns">
               <div className="column is-one-quarter">
                 <Navigation
+                  data={ this.props.data }
                   severity={ this.state.severity } 
                   confidence={ this.state.confidence }
                   issueType={ this.state.issueType }
@@ -402,4 +437,4 @@ const templateContent = `
     );
   </script>
 </body>
-</html>`
+</html>
